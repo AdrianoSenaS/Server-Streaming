@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLV Player</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.5.0/flv.min.js"></script>
+</head>
+<body>
+  <h1>Player FLV</h1>
+  <video id="videoElement" controls autoplay muted width="50%" height="50%" style="border: 1px solid #000;"></video>
+  
+  <script>
+    if (flvjs.isSupported()) {
+      const videoElement = document.getElementById('videoElement');
+      const flvPlayer = flvjs.createPlayer({
+        type: 'flv',
+        url: 'http://localhost:8000/live/test1.flv' // URL FLV do NodeMediaServer
+      });
+      flvPlayer.attachMediaElement(videoElement);
+      flvPlayer.load();
+      flvPlayer.play();
+    } else {
+      alert('FLV não suportado no seu navegador.');
+    }
+  </script>
+</body>
+</html>
